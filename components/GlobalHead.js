@@ -1,14 +1,18 @@
 import Head from 'next/head'
+import { string } from 'prop-types'
 
-const GlobalHead = () => (
+const GlobalHead = ({ title }) => (
   <Head>
-    <title>UtahJS Raffle</title>
-    <meta property="og:title" content="UtahJS - Raffle" />
+    <title>{title}</title>
+    <meta property="og:title" content={title} />
     <meta property="og:image" content="assets/img/header-logo.png" />
     <meta property="og:image:width" content="140" />
     <meta property="og:image:height" content="180" />
     <meta property="og:site_name" content="UtahJS Raffle" />
-    <meta property="og:description" content="UtahJS Raffle" />
+    <meta
+      property="og:description"
+      content="UtahJS Confrence Raffle, used to pick random seat in theater"
+    />
     <link
       rel="apple-touch-icon"
       sizes="57x57"
@@ -86,5 +90,13 @@ const GlobalHead = () => (
     <meta name="theme-color" content="#f9e034" />
   </Head>
 )
+
+GlobalHead.propTypes = {
+  title: string,
+}
+
+GlobalHead.defaultProps = {
+  title: 'UtahJS Raffle',
+}
 
 export default GlobalHead

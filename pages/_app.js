@@ -1,5 +1,6 @@
 // import App from 'next/app'
 import 'normalize.css'
+import './global.css'
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />

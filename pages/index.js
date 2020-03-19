@@ -1,14 +1,23 @@
 import Head from 'components/GlobalHead'
+import Link from 'next/link'
+import { theaters } from 'definitions/theater'
 
 const Home = () => (
   <div className="container">
     <Head />
     <main>
-      <h1 className="title">UtahJS Confrence</h1>
+      <img src="/utahjs-logo.png" alt=" " />
+      <h1 className="title">UtahJS Conf Raffle</h1>
 
-      <p className="description">Raffle</p>
-
-      <div className="grid"></div>
+      <ul className="select-theater">
+        {theaters.map(theater => (
+          <li key={theater}>
+            <Link href={{ pathname: '/theater', query: { theater } }}>
+              <a>Theater {theater}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </main>
 
     <footer>
@@ -35,7 +44,7 @@ const Home = () => (
       }
 
       main {
-        padding: 5rem 0;
+        padding: 2rem 0;
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -68,30 +77,8 @@ const Home = () => (
         font-size: 4rem;
       }
 
-      .title,
-      .description {
+      .title {
         text-align: center;
-      }
-
-      .description {
-        line-height: 1.5;
-        font-size: 1.5rem;
-      }
-    `}</style>
-
-    <style jsx global>{`
-      html,
-      body {
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-          Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-      }
-      *,
-      *:before,
-      *:after {
-        box-sizing: inherit;
       }
     `}</style>
   </div>
