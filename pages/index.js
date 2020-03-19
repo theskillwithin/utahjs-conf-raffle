@@ -12,7 +12,7 @@ const Home = () => (
       <ul className="select-theater">
         {theaters.map(theater => (
           <li key={theater}>
-            <Link href={{ pathname: '/theater', query: { theater } }}>
+            <Link href="/theater/[id]" as={`/theater/${theater}`}>
               <a>Theater {theater}</a>
             </Link>
           </li>
