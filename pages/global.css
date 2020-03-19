@@ -11,3 +11,7 @@ body {
 *:after {
   box-sizing: inherit;
 }
+
+a {
+  color: inherit;
+}

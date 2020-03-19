@@ -3,74 +3,25 @@ import Link from 'next/link'
 import { theaters } from 'definitions/theater'
 
 const Home = () => (
-  <div className="container">
+  <>
     <Head />
-    <main>
-      <img src="/utahjs-logo.png" alt=" " />
-      <h1 className="title">UtahJS Conf Raffle</h1>
+    <img className="logo" src="/utahjs-logo.png" alt=" " />
+    <h1 className="title">UtahJS Conf Raffle</h1>
 
-      <ul className="select-theater">
-        {theaters.map(theater => (
-          <li key={theater}>
-            <Link href="/theater/[id]" as={`/theater/${theater}`}>
-              <a>Theater {theater}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </main>
-
-    <footer>
-      <a
-        href="https://github.com/theskillwithin/utahjs-conf-raffle"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        github.com/theskillwithin/utahjs-conf-raffle
-      </a>
-      <a href="https://nextjs.org/" target="_blank" rel="noopener noreferrer">
-        Build with NextJS
-      </a>
-    </footer>
+    <ul className="select-theater">
+      {theaters.map(theater => (
+        <li key={theater}>
+          <Link href="/theater/[id]" as={`/theater/${theater}`}>
+            <a>Theater {theater}</a>
+          </Link>
+        </li>
+      ))}
+    </ul>
 
     <style jsx>{`
-      .container {
-        min-height: 100vh;
-        padding: 0 0.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+      .logo {
+        margin-bottom: 3rem;
       }
-
-      main {
-        padding: 2rem 0;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      footer {
-        width: 100%;
-        height: 6.6rem;
-        border-top: 1px solid #eaeaea;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      footer > * + * {
-        margin-top: 1rem;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
       .title {
         margin: 0;
         line-height: 1.15;
@@ -80,8 +31,22 @@ const Home = () => (
       .title {
         text-align: center;
       }
+
+      .select-theater {
+        padding-left: 0;
+        list-style-type: none;
+        margin-top: 2rem;
+      }
+
+      .select-theater a {
+        font-size: 2rem;
+      }
+
+      .select-theater li + li {
+        margin-top: 1em;
+      }
     `}</style>
-  </div>
+  </>
 )
 
 export default Home
