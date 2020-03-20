@@ -1,6 +1,10 @@
 {
-  "short_name": "UtahJS",
-  "name": "UtahJS - JavaScript Engineers of Utah",
+  "short_name": "Raffle",
+  "name": "UtahJS - Raffle",
+  "display": "standalone",
+  "background_color": "#fff",
+  "description": "UtahJS Raffle",
+  "start_url": "/",
   "icons": [
     {
       "src": "/favicons/android-icon-36x36.png",
