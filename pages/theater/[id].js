@@ -27,6 +27,8 @@ const Theater = () => {
   const seats =
     theaterData && generateSeats(theaterData?.rows, theaterData?.seatsPerRow)
 
+  const totalSeats = seats && seats.reduce((acc, curr) => curr.length + acc, 0)
+
   const getRandomSeat = () => {
     const randomSeat =
       seats[Math.floor(Math.random() * seats.length)][
@@ -34,6 +36,9 @@ const Theater = () => {
       ]
 
     if (filterPast && pastSelections.includes(randomSeat)) {
+      if (pastSelections.length === totalSeats) {
+        reset()
+      }
       return getRandomSeat()
     }
 
