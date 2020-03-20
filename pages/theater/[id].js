@@ -97,6 +97,7 @@ const Theater = () => {
               id="letter-select"
               onChange={e => setCustomRow(parseInt(e.target.value))}
               defaultValue={customRow}
+              disabled={animation}
             >
               {alphabet.map((letter, index) => (
                 <option key={letter} value={index + 1}>
@@ -111,6 +112,7 @@ const Theater = () => {
               onChange={e => setCustomColumn(parseInt(e.target.value))}
               min="1"
               max="900"
+              disabled={animation}
             />
           </div>
         )}
