@@ -5,17 +5,17 @@ export const theaters = ['100', '200', '300']
 export const theatersData = {
   '100': {
     id: 100,
-    rows: 27,
+    rows: 26,
     seatsPerRow: 40,
   },
   '200': {
     id: 200,
-    rows: 27,
+    rows: 26,
     seatsPerRow: 40,
   },
   '300': {
     id: 300,
-    rows: 27,
+    rows: 26,
     seatsPerRow: 40,
   },
 }

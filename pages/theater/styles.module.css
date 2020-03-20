@@ -1,6 +1,60 @@
+.conatiner {
+  max-width: 500px;
+  width: 100%;
+  height: 100%;
+  flex: 1;
+}
+
 .select {
   position: absolute;
   top: 1rem;
   left: 1rem;
   font-size: 21px;
+}
+
+.settings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  border: 1px dotted black;
+  padding: 1rem;
+
+  > * {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+      margin-right: 1em;
+    }
+  }
+
+  > * + * {
+    margin-left: 2rem;
+  }
+}
+
+.past {
+  position: absolute;
+  bottom: 6.6rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  background: #eaeaea;
+  white-space: wrap;
+
+  span {
+    display: inline-block;
+    margin-right: 0.5em;
+
+    &:after {
+      content: ',';
+    }
+  }
+
+  &:not(:empty):before {
+    content: 'past results: ';
+  }
 }
