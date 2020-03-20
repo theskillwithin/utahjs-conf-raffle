@@ -3,8 +3,9 @@
   "name": "UtahJS - Raffle",
   "display": "standalone",
   "background_color": "#fff",
+  "theme_color": "#f9e034",
   "description": "UtahJS Raffle",
-  "start_url": "/",
+  "start_url": ".",
   "icons": [
     {
       "src": "/favicons/android-icon-36x36.png",

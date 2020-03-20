@@ -4,6 +4,7 @@ import { string } from 'prop-types'
 const GlobalHead = ({ title }) => (
   <Head>
     <title>{title}</title>
+    <link rel="manifest" href="/manifest.json" />
     <meta property="og:title" content={title} />
     <meta property="og:image" content="assets/img/header-logo.png" />
     <meta property="og:image:width" content="140" />
