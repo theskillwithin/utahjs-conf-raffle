@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import Head from 'components/GlobalHead'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -7,6 +7,7 @@ import { theatersData, theaters } from 'definitions/theater'
 import styles from './styles.module.css'
 
 const generateSeats = (rows, columns) => {
+  if (!rows || !columns) return []
   const rowsArray = [...Array(rows).keys()]
   return rowsArray.map(row => {
     const colArray = [...Array(columns).keys()]
@@ -24,10 +25,16 @@ const Theater = () => {
   const theaterNumber = String(id)
   const theaterData = theatersData[theaterNumber]
 
-  const seats =
-    theaterData && generateSeats(theaterData?.rows, theaterData?.seatsPerRow)
+  const seats = useMemo(() =>
+    generateSeats(theaterData?.rows, theaterData?.seatsPerRow),
+  )
 
   const totalSeats = seats && seats.reduce((acc, curr) => curr.length + acc, 0)
+
+  const reset = () => {
+    setRandomSeat(null)
+    setPastSelections([])
+  }
 
   const getRandomSeat = () => {
     const randomSeat =
@@ -44,11 +51,6 @@ const Theater = () => {
 
     setRandomSeat(randomSeat)
     setPastSelections(past => [...past, randomSeat])
-  }
-
-  const reset = () => {
-    setRandomSeat(null)
-    setPastSelections([])
   }
 
   if (!theaters.includes(theaterNumber) || !theaterData)
