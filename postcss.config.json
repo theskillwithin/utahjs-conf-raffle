@@ -13,6 +13,7 @@
         }
       }
     ],
-    "postcss-nested"
+    "postcss-nested",
+    "postcss-for"
   ]
 }

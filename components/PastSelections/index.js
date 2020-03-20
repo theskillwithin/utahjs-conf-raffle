@@ -1,5 +1,5 @@
 import styles from './styles.module.css'
-import { string } from 'prop-types'
+import { array } from 'prop-types'
 
 const PastSelections = ({ pastSelections }) => (
   <pre className={styles.past}>
@@ -10,7 +10,7 @@ const PastSelections = ({ pastSelections }) => (
 )
 
 PastSelections.propTypes = {
-  pastSelections: string,
+  pastSelections: array,
 }
 
 PastSelections.defaultProps = {

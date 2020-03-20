@@ -10,31 +10,23 @@
 }
 
 .settings {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  grid-gap: 10px;
   margin: 2rem auto;
   padding: 1rem;
   border: 1px dotted black;
-  max-width: 350px;
+  width: 350px;
 
   > * {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-
     label {
       margin-right: 1em;
     }
   }
 
-  > * + * {
-    margin-left: 2rem;
-  }
-
   .custom {
-    margin-top: 1rem;
     select:not(:last-child),
     input:not(:last-child) {
       margin-right: 2em;
@@ -47,4 +39,8 @@
       background-color: var(--invalid);
     }
   }
+}
+
+.result {
+  font-size: 100px;
 }

@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { theatersData, theaters } from 'definitions/theater'
 import PastSelections from 'components/PastSelections'
 import SelectTheater from 'components/SelectTheater'
+import RollAnimation from 'components/RollAnimation'
 import { alphabet } from 'utils/alphabet'
 import { generateSeats } from 'utils/generateSeats'
 
@@ -13,6 +14,7 @@ const Theater = () => {
   const [randomSeat, setRandomSeat] = useState(null)
   const [pastSelections, setPastSelections] = useState([])
   const [filterPast, setFilterPast] = useState(true)
+  const [animation, setAnimation] = useState(false)
   const [customRow, setCustomRow] = useState(3)
   const [customColumn, setCustomColumn] = useState(3)
   const router = useRouter()
@@ -62,18 +64,30 @@ const Theater = () => {
       <Head title={`UtahJS Raffle - Theater ${id}`} />
       <SelectTheater />
 
-      <div className={styles.settings}>
-        <div className={styles.setting}>
+      <section className={styles.settings}>
+        <div>
           <label htmlFor="dedups-setting">No Duplicate Results</label>
           <input
             id="dedups-setting"
             type="checkbox"
             checked={filterPast}
             onChange={() => setFilterPast(!filterPast)}
+            disabled={animation}
           />
         </div>
         <div>
-          <button onClick={reset}>reset</button>
+          <label htmlFor="animation-setting">Animation (experimental)</label>
+          <input
+            id="animation-setting"
+            type="checkbox"
+            checked={animation}
+            onChange={() => setAnimation(!animation)}
+          />
+        </div>
+        <div>
+          <button onClick={reset} disabled={animation}>
+            reset
+          </button>
         </div>
         {theaterID === 'custom' && (
           <div className={styles.custom}>
@@ -100,7 +114,7 @@ const Theater = () => {
             />
           </div>
         )}
-      </div>
+      </section>
 
       <section className={styles.getRandom}>
         <h1>Theater: {id}</h1>
@@ -110,10 +124,13 @@ const Theater = () => {
         >
           Get Random Seat!
         </button>
-        {!!randomSeat && <h1>{randomSeat}</h1>}
+        {!!randomSeat && !animation && (
+          <h1 className={styles.result}>{randomSeat}</h1>
+        )}
+        {animation && <RollAnimation randomSeat={randomSeat} />}
       </section>
 
-      <PastSelections pastSelections={pastSelections} />
+      {!animation && <PastSelections pastSelections={pastSelections} />}
     </div>
   )
 }
