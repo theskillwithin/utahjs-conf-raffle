@@ -36,7 +36,7 @@ const Theater = () => {
       ]
 
     if (filterPast && pastSelections.includes(randomSeat)) {
-      if (pastSelections.length === totalSeats) {
+      if (pastSelections.length === totalSeats - 1) {
         reset()
       }
       return getRandomSeat()
