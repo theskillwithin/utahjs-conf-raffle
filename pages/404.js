@@ -1,7 +1,9 @@
 import Link from 'next/link'
+import Head from 'components/GlobalHead'
 
 const Custom404 = () => (
   <div>
+    <Head title="404" />
     <Link href="/">
       <a className="go-home">&larr; Select Theater</a>
     </Link>
