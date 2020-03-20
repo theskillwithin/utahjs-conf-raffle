@@ -17,8 +17,9 @@
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  border: 1px dotted black;
+  margin: 2rem auto;
   padding: 1rem;
+  border: 1px dotted black;
 
   > * {
     display: flex;
