@@ -8,6 +8,7 @@ const nextConfig = {
     config.resolve.alias['definitions'] = path.join(__dirname, 'definitions')
     return config
   },
+  target: 'serverless',
 }
 
 module.exports = withOffline(nextConfig)
