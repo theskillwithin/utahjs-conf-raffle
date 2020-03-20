@@ -1,4 +1,4 @@
-export const theaters = ['100', '200', '300']
+export const theaters = ['100', '200', '300', 'custom']
 
 // Rows are A-Z
 // Seats are Numbers

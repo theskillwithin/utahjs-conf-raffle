@@ -5,7 +5,13 @@ import { theaters } from 'definitions/theater'
 const Home = () => (
   <>
     <Head />
-    <img className="logo" src="/utahjs-logo.png" alt=" " />
+    <a href="https://utahjs.com/" target="__blank">
+      <img
+        className="logo"
+        src="/utahjs-logo.png"
+        alt="Visit Utah JS Website"
+      />
+    </a>
     <h1 className="title">UtahJS Conf Raffle</h1>
 
     <ul className="select-theater">
@@ -36,6 +42,7 @@ const Home = () => (
         padding-left: 0;
         list-style-type: none;
         margin-top: 2rem;
+        text-align: center;
       }
 
       .select-theater a {

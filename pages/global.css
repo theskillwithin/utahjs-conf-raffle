@@ -12,6 +12,27 @@ body {
   box-sizing: inherit;
 }
 
+:root {
+  --javascript-yellow: #f7df1e;
+  --light-gray: #eaeaea;
+  --invalid: salmon;
+  --gray: gray;
+}
 a {
-  color: inherit;
+  color: black;
+}
+
+button {
+  padding: 0.5em 1em;
+  font-weight: bold;
+  background: var(--javascript-yellow);
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+input,
+select {
+  border: 1px solid var(--gray);
 }

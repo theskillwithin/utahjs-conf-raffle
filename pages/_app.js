@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }) {
         footer {
           width: 100%;
           height: 6.6rem;
-          border-top: 1px solid #eaeaea;
+          border-top: 1px solid var(--light-gray);
           display: flex;
           flex-direction: column;
           justify-content: center;

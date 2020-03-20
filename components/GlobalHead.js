@@ -88,7 +88,7 @@ const GlobalHead = ({ title }) => (
       name="msapplication-TileImage"
       content="/favicons/ms-icon-144x144.png"
     />
-    <meta name="theme-color" content="#f9e034" />
+    <meta name="theme-color" content="#f7df1e" />
   </Head>
 )
 

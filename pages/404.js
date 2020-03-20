@@ -1,12 +1,10 @@
-import Link from 'next/link'
 import Head from 'components/GlobalHead'
+import SelectTheater from 'components/SelectTheater'
 
 const Custom404 = () => (
   <div>
     <Head title="404" />
-    <Link href="/">
-      <a className="go-home">&larr; Select Theater</a>
-    </Link>
+    <SelectTheater />
     <h1>404 - Page Not Found</h1>
     <style jsx>{`
       .go-home {
