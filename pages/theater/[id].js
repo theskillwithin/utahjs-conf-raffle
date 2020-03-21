@@ -121,7 +121,7 @@ const Theater = () => {
       <section className={styles.getRandom}>
         <h1>Theater: {id}</h1>
         <button
-          onClick={getRandomSeat}
+          onClick={() => getRandomSeat()}
           disabled={theaterID === 'custom' && !customColumn}
         >
           Get Random Seat!

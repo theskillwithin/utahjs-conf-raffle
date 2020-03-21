@@ -3,15 +3,22 @@ import { string } from 'prop-types'
 import { alphabet } from 'utils/alphabet'
 import styles from './styles.module.css'
 
-const rnd = (min, max) => {
-  return Math.floor(Math.random() * (max - min)) + min
-}
-
-const Ring = ({ numbers, transform }) => {
+const Ring = ({ ring: { deg, arr } }) => {
+  const degs = Array(arr.length)
+    .fill()
+    .map((_, i) => (360 / arr.length) * i + 1)
+  const slotRransform = i => `rotateX(${degs[i]}deg)`
   return (
-    <div className={styles.ring} style={{ transform }}>
-      {numbers.map(number => (
-        <div key={number} className={styles.slot} id={number}>
+    <div className={styles.ring} style={{ transform: `rotateX(${deg}deg)` }}>
+      {arr.map((number, i) => (
+        <div
+          key={number}
+          className={styles.slot}
+          id={number}
+          style={{
+            transform: `${slotRransform(i)} translateZ(202.5px)`,
+          }}
+        >
           {number}
         </div>
       ))}
@@ -23,77 +30,50 @@ const RollAnimation = ({ randomSeat }) => {
   useLayoutEffect(() => {
     rotate()
   }, [randomSeat])
-  const [ring, setRing] = useState({
-    0: {
-      next: 2,
-      curr: 2,
-      prev: 0,
+
+  const [rings, setRing] = useState([
+    {
       deg: 0,
       arr: alphabet,
     },
-    1: {
-      next: 2,
-      curr: 2,
-      prev: 0,
+    {
       deg: 0,
-      arr: Array(20)
+      arr: Array(21)
         .fill()
         .map((_, i) => i),
     },
-    2: {
-      next: 0,
-      curr: 2,
-      prev: 0,
+    {
       deg: 0,
-      arr: Array(20)
+      arr: Array(21)
         .fill()
         .map((_, i) => i),
     },
-  })
-  const [transforms, setTransform] = useState({
-    0: null,
-    1: null,
-    2: null,
-  })
+  ])
   // const splitString = [...randomSeat]
 
-  const degs = [0, 45, 90, 135, 180, 225, 270, 315, 360]
-
   const rotate = () => {
-    const rings = [0, 1, 2]
-    rings.forEach((el, i) => {
-      let obj = ring[i],
-        deg = obj.deg,
-        curr = obj.curr,
-        arr = obj.arr,
-        res = deg - degs[rnd(0, degs.length)] * rnd(1, 30)
-      setTransform(t => ({ ...t, [i]: `rotateX(${res}deg)` }))
-      obj.deg = res
-      let cnt = Math.abs(res - deg) / (360 / arr.length),
-        tmp = arr.slice(arr.indexOf(curr)),
-        next,
-        prev
-      for (let i = 0; i <= cnt; i++) {
-        tmp.push.apply(tmp, arr)
-        curr = tmp[i]
-        next = tmp[i - 1]
-        prev = tmp[i + 1]
-      }
-      obj.curr = curr
-      if (cnt > 0) {
-        obj.next = next
-        obj.prev = prev
-      }
-      setRing(current => ({ ...current, [i]: obj }))
+    const update = rings.map((ring, i) => {
+      const { arr, deg } = ring
+      const degs = Array(arr.length)
+        .fill()
+        .map((_, i) => (360 / arr.length) * i + 1)
+      const generatedDeg =
+        degs[Math.floor(Math.random() * degs.length)] +
+        360 * Math.floor(Math.random() * 10 + 1)
+      console.log(generatedDeg)
+      const newDeg = generatedDeg === deg ? generatedDeg + 360 : generatedDeg
+
+      return { deg: newDeg, arr }
     })
+    setRing(update)
   }
 
   return (
     <div className={styles.slots}>
       <div className={styles.rings}>
-        <Ring numbers={ring[0].arr} transform={transforms[0]} />
-        <Ring numbers={ring[1].arr} transform={transforms[1]} />
-        <Ring numbers={ring[2].arr} transform={transforms[2]} />
+        <Ring ring={rings[0]} />
+        <Ring ring={rings[1]} />
+        <Ring ring={rings[2]} />
       </div>
     </div>
   )

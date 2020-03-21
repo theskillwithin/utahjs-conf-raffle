@@ -34,14 +34,8 @@
 .slot {
   position: absolute;
   width: calc(100% + 1rem);
-  height: 100%;
-  font-size: 150px;
+  font-size: 54px;
   background: rgba(255, 255, 255, 0.935);
-}
-@for $i from 1 to 8 {
-  .slot:nth-child($(i)) {
-    transform: rotateX(calc(45deg * $(i))) translateZ(calc(75px * 2.7));
-  }
 }
 
 @keyframes scale-on {
