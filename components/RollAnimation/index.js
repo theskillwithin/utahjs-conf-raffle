@@ -60,7 +60,6 @@ const RollAnimation = ({ randomSeat }) => {
       const generatedDeg =
         degs[Math.floor(Math.random() * degs.length)] +
         360 * Math.floor(Math.random() * 10 + 1)
-      console.log(generatedDeg)
       const newDeg = generatedDeg === deg ? generatedDeg + 360 : generatedDeg
 
       return { deg: newDeg, arr }
