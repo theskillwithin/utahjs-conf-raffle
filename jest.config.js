@@ -13,9 +13,6 @@ module.exports = {
     '^utils': '<rootDir>/utils',
     '^definitions': '<rootDir>/definitions',
   },
-  transform: {
-    '^.+\\.jsx?$': 'babel-jest',
-  },
   moduleFileExtensions: ['js', 'jsx'],
   setupFiles: [
     '<rootDir>/config/jest.polyfills.js',
