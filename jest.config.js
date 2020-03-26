@@ -17,6 +17,9 @@ module.exports = {
     '^.+\\.jsx?$': 'babel-jest',
   },
   moduleFileExtensions: ['js', 'jsx'],
-  setupFiles: ['<rootDir>/config/jest.polyfills.js'],
+  setupFiles: [
+    '<rootDir>/config/jest.polyfills.js',
+    '<rootDir>/config/jest.setup.js',
+  ],
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
 }
