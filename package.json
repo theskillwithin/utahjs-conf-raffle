@@ -9,7 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "next": "9.3.2",
+    "next": "11.1.0",
     "next-offline": "^5.0.0",
     "normalize.css": "^8.0.1",
     "react": "16.13.1",
